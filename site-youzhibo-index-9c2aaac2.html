@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>优直播 · 资料整理与索引页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #faf9f7;
+      font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans", Roboto, "Helvetica Neue", sans-serif;
+      line-height: 1.65;
+      color: #2c2c2c;
+      padding: 2.4rem 1.2rem;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.8rem 2rem 4rem;
+      background-color: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.02), 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 480;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+      color: #1f1f1f;
+      border-left: 4px solid #b7a99a;
+      padding-left: 1rem;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: #5e5e5e;
+      margin-bottom: 2.8rem;
+      padding-left: 1.4rem;
+      border-bottom: 1px solid #eae7e2;
+      padding-bottom: 1.4rem;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #9b8f84;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+
+    .index-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.6rem 0 2.4rem;
+    }
+
+    .index-card {
+      background: #f6f4f1;
+      border-radius: 18px;
+      padding: 1.2rem 1.2rem 1.2rem 1.6rem;
+      transition: background 0.15s ease;
+    }
+
+    .index-card:hover {
+      background: #efebe7;
+    }
+
+    .index-card h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: #1f2a2f;
+    }
+
+    .index-card p {
+      font-size: 0.875rem;
+      color: #5a5a5a;
+      line-height: 1.5;
+    }
+
+    .index-card .badge {
+      display: inline-block;
+      background: #d9d2cc;
+      color: #2f2f2f;
+      font-size: 0.65rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 40px;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .desc-block {
+      margin: 2.6rem 0 1.8rem;
+      padding: 1.8rem 0;
+      border-top: 1px solid #eae5df;
+      border-bottom: 1px solid #eae5df;
+    }
+
+    .desc-block p {
+      font-size: 0.98rem;
+      color: #3a3a3a;
+      margin-bottom: 1rem;
+    }
+
+    .desc-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-area {
+      background: #f2efe9;
+      border-radius: 28px;
+      padding: 1.6rem 2rem;
+      margin: 2rem 0 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .tip-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      color: #8f7d6e;
+    }
+
+    .tip-content {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .tip-content h4 {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: #25221f;
+    }
+
+    .tip-content p {
+      font-size: 0.91rem;
+      color: #4a4744;
+      margin-bottom: 0.4rem;
+    }
+
+    .related-links {
+      margin: 2.2rem 0 0.6rem;
+    }
+
+    .related-links h4 {
+      font-weight: 440;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      color: #4d4945;
+    }
+
+    .related-links ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+    }
+
+    .related-links li {
+      font-size: 0.92rem;
+      color: #4d4945;
+    }
+
+    .related-links li a {
+      color: #6d5c4b;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.1s;
+      font-weight: 450;
+    }
+
+    .related-links li a:hover {
+      border-bottom: 1px solid #b5a290;
+    }
+
+    .faq-mini {
+      margin-top: 2.6rem;
+      padding: 1.6rem 0 0.2rem;
+      border-top: 1px dashed #d9d2cb;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item .q {
+      font-weight: 480;
+      color: #2b2723;
+      margin-bottom: 0.2rem;
+      font-size: 0.98rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #5f5a55;
+      padding-left: 0.8rem;
+      border-left: 2px solid #d6cec5;
+    }
+
+    .inline-link-highlight {
+      color: #6d5c4b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #cfc4b9;
+      font-weight: 430;
+    }
+
+    .inline-link-highlight:hover {
+      text-decoration-color: #7a6b5d;
+      color: #3f342b;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #eae5df;
+      margin: 1.6rem 0;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 1rem 0.6rem;
+      }
+      .container {
+        padding: 1.8rem 1.2rem 2.6rem;
+        border-radius: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+        padding-left: 0.7rem;
+      }
+      .hero-desc {
+        padding-left: 0.7rem;
+      }
+      .index-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .tip-area {
+        padding: 1.4rem 1.2rem;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .related-links ul {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>资料索引 · 优直播</h1>
+  <div class="hero-desc">
+    信息整理 · 知识入口 · 结构阅读
+  </div>
+
+  <!-- 目录式卡片网格 -->
+  <div class="section-label">内容目录</div>
+  <div class="index-grid">
+    <div class="index-card">
+      <span class="badge">基础</span>
+      <h3>平台概述</h3>
+      <p>功能定位、服务边界与使用场景的简明整理。</p>
+    </div>
+    <div class="index-card">
+      <span class="badge">操作</span>
+      <h3>使用指引</h3>
+      <p>常见操作流程、界面说明与配置要点。</p>
+    </div>
+    <div class="index-card">
+      <span class="badge">分类</span>
+      <h3>内容类型</h3>
+      <p>直播形式、回放资源、专题栏目的分类索引。</p>
+    </div>
+    <div class="index-card">
+      <span class="badge">参考</span>
+      <h3>相关链接</h3>
+      <p>手册、公告、帮助中心与外部资料。</p>
+    </div>
+  </div>
+
+  <!-- 说明区：从资料整理和索引角度展开 -->
+  <div class="desc-block">
+    <p>本页是一份围绕「优直播」聚合的资料索引页，侧重信息结构而非营销介绍。我们从内容整理出发，将常见的功能模块、使用路径和参考材料梳理为若干分区，方便需要快速定位信息的人查阅。</p>
+    <p>作为知识入口，这里不重复罗列所有细节，而是提供一份清晰的目录骨架。如果需要深入了解具体功能或查看完整说明，可以前往 <a href="https://site-youzhibo.com" class="inline-link-highlight">优直播</a> 站内浏览更详尽的内容组织。</p>
+    <p>对于首次接触的人，建议先阅读“平台概述”卡片中的基础信息，再根据兴趣跳转到操作指引或内容分类。</p>
+  </div>
+
+  <!-- 提示区 -->
+  <div class="tip-area">
+    <div class="tip-icon">⏺</div>
+    <div class="tip-content">
+      <h4>信息使用提示</h4>
+      <p>本索引页面由资料整理者维护，所有条目均指向公开可查的说明或参考页面。部分内容可能随版本更新而变化，请以 <a href="https://site-youzhibo.com" class="inline-link-highlight">优直播</a> 站内最新信息为准。</p>
+      <p style="margin-top:0.2rem;">若发现链接失效或分类偏差，欢迎反馈调整。</p>
+    </div>
+  </div>
+
+  <!-- 相关信息区 -->
+  <div class="related-links">
+    <h4>你可能还需要</h4>
+    <ul>
+      <li>→ 关于 <a href="https://site-youzhibo.com">优直播</a> 的更新日志</li>
+      <li>→ 常见问题与社区讨论</li>
+      <li>→ 合作与联系渠道</li>
+      <li>→ 使用条款及隐私说明</li>
+    </ul>
+  </div>
+
+  <!-- FAQ 摘要（简洁） -->
+  <div class="faq-mini">
+    <div class="faq-item">
+      <div class="q">❓ 如何快速找到直播回放？</div>
+      <div class="a">在站内「内容类型」分类下可检索回放合集，也可通过搜索框筛选日期或标签。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">❓ 资料索引多久更新一次？</div>
+      <div class="a">本页面随站内主要结构变化同步整理，无固定周期，但会保持与实际信息大致同步。</div>
+    </div>
+  </div>
+
+  <hr>
+  <p style="font-size:0.8rem; color:#8f857c; text-align:right; letter-spacing:0.03em;">资料整理 · 索引页 · 优直播</p>
+</div>
+</body>
+</html>
