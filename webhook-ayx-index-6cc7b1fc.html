@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 资料整理与索引手记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f7f5f2;
+            color: #1e1e1e;
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+        }
+        .hero {
+            background: #1a1e26;
+            background-image: radial-gradient(circle at 20% 30%, #2d3340 0%, #141820 100%);
+            color: #e6e8ed;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to top, #f7f5f2, transparent);
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 350;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.75rem;
+            color: #f0f2f5;
+        }
+        .hero p.pull {
+            font-size: 1.3rem;
+            font-weight: 270;
+            max-width: 640px;
+            margin: 1rem auto 0;
+            color: #bcc3cf;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        section {
+            padding: 2.8rem 0;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 320;
+            border-left: 4px solid #b8914b;
+            padding-left: 1.2rem;
+            color: #3b3f4a;
+            margin-bottom: 1.8rem;
+        }
+        .intro-text p {
+            margin-bottom: 1.4rem;
+            font-size: 1.05rem;
+        }
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem 2rem;
+            margin: 2rem 0 0.5rem;
+        }
+        .feature-item {
+            flex: 1 1 200px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 6px 20px rgba(0,0,0,0.03);
+            border: 1px solid #ece8e2;
+            transition: all 0.15s ease;
+        }
+        .feature-item:hover {
+            border-color: #d8cec0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+        .feature-item h3 {
+            font-size: 1.2rem;
+            font-weight: 480;
+            margin-bottom: 0.4rem;
+            color: #1f242e;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #4d4f58;
+        }
+        .feature-item .num {
+            display: inline-block;
+            font-size: 0.75rem;
+            background: #ede8e0;
+            color: #4f4b44;
+            border-radius: 30px;
+            padding: 0.05rem 0.7rem;
+            margin-bottom: 0.6rem;
+            font-weight: 400;
+        }
+        .scenario-note {
+            background: #f0ede7;
+            padding: 2rem 2rem;
+            border-radius: 28px;
+            margin: 2rem 0 1rem;
+        }
+        .scenario-note p {
+            margin-bottom: 0.9rem;
+            font-size: 1rem;
+            color: #2b2e36;
+        }
+        .hint-box {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin: 2.2rem 0 1rem;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e3ddd4;
+        }
+        .hint-box h4 {
+            font-weight: 430;
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: #3c3f47;
+        }
+        .hint-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .hint-box li {
+            padding: 0.4rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            color: #3a3d46;
+        }
+        .hint-box li::before {
+            content: '·';
+            position: absolute;
+            left: 0.2rem;
+            color: #b8914b;
+            font-weight: 700;
+        }
+        a {
+            color: #9a6d3c;
+            text-decoration: none;
+            border-bottom: 1px dashed #cbb295;
+            transition: border 0.15s, color 0.15s;
+            font-weight: 400;
+        }
+        a:hover {
+            color: #543e28;
+            border-bottom: 1px solid #9a6d3c;
+        }
+        .footer-note {
+            border-top: 1px solid #ddd8d0;
+            padding: 2rem 0 3rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #5e5b55;
+        }
+        .footer-note p {
+            margin-bottom: 0.3rem;
+        }
+        .inline-link-highlight {
+            background: #faf6f1;
+            padding: 0.08rem 0.3rem;
+            border-radius: 4px;
+            transition: background 0.1s;
+        }
+        .inline-link-highlight:hover {
+            background: #efe7dc;
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.9rem; }
+            .hero p.pull { font-size: 1.1rem; }
+            .feature-list { flex-direction: column; }
+            .scenario-note, .hint-box { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>从信息碎片到索引线索</h1>
+        <p class="pull">一份关于游戏内容整理、资料归档与主题索引的个人备忘</p>
+    </div>
+
+    <div class="container">
+        <section>
+            <div class="tagline">慢慢梳理，是为了更清晰地看见脉络</div>
+            <div class="intro-text">
+                <p>你大概也有过这样的时刻：忽然想找回某个游戏的背景考据、某一栏目的往期列表、或者一篇写了一半的设定笔记，却发现收藏夹、书签和本地文件早已各自为政。为了更好地整理这些分散的信息碎片，我逐渐搭建了一个以资料索引与内容归档为主的小站——<a href="https://webhook-ayx.com.cn" class="inline-link-highlight">爱游戏</a>，它不声张，只是一个安静的收集与归档点。</p>
+                <p>站点里没有花哨的排行或催促更新的推送，更多的是按主题归类的文章链接、冷门补完计划、以及一些个人向的游戏记录。每一个条目背后，是筛选、去重、标注来源的功夫。把信息排布平整，本身就有一种踏实感。</p>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <span class="num">01</span>
+                    <h3>主题式索引</h3>
+                    <p>按系列、机制、年代或创作团队整理导航，减少重复搜索，让关联内容自然靠近。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="num">02</span>
+                    <h3>来源与标注</h3>
+                    <p>每条记录都尽量保留原始出处、版本信息或简要备注，方便回溯与交叉验证。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="num">03</span>
+                    <h3>补完向归档</h3>
+                    <p>收录那些不易找到的访谈、设定集摘要、未翻译的随笔，以及社区里被遗漏的讨论。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="num">04</span>
+                    <h3>轻量阅读感</h3>
+                    <p>界面以文本为主，没有弹窗、自动播放或追踪脚本，只提供平实的浏览体验。</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="scenario-note">
+                <p><strong>一个常见的场景：</strong>偶然看到某个老游戏的术语，想确认它的最早出处；或者在讨论中需要引用一段具体的开发者访谈。与其在数个平台间反复跳转，不如先翻翻索引——将信得过的链接与参考按主题存放，既是整理，也是一种温和的积累。不必追求全面，够用就好。</p>
+                <p style="margin-bottom: 0;">经过一段时间的填充，目前的资料库已涵盖近十年来持续关注的几个系列，以及一些独立作品的中文资料补完。如果你也习惯一边玩一边收集素材，或许这里会有几条你用得上的线索。</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="hint-box">
+                <h4>一些关于索引的小经验</h4>
+                <ul>
+                    <li>给每个条目标记“收录日期”与“可信度简评”，半年后回顾时你会感谢自己。</li>
+                    <li>不要贪多：一次整理一个主题或一个系列，比泛泛收集更实用。</li>
+                    <li>偶尔清理死链，同时也保留失效链接的标题与存档提示，它们有时能指引新的搜索方向。</li>
+                    <li>把索引当作活页本，随时增补、合并、打散——资料整理本身就是一种思考过程。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <p>截至目前，站点里的内容还在慢慢生长。如果你也在用类似的方式整理自己的游戏资料库，或者恰好寻到某篇难找的旧文，欢迎顺着索引来<a href="https://webhook-ayx.com.cn">爱游戏</a>看一看。这里没有完成时的说法，只有持续修订中的草稿与线索。</p>
+            <p style="margin-top: 1rem; color: #6a655e;">希望它成为你资料夹里一个安静的坐标，不打扰，偶尔有用。</p>
+        </section>
+
+        <div class="footer-note">
+            <p>—— 整理归档 · 持续修订 · 非商业用途 ——</p>
+            <p style="font-size: 0.85rem; color: #8a847c;">内容基于个人收集与公开来源，仅作索引分享。页面无广告、无追踪。</p>
+        </div>
+    </div>
+</body>
+</html>
